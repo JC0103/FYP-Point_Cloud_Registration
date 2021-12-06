@@ -1,2 +1,6 @@
 # datasets
 RPMNet/datasets/
+
+# image files
+*.json
+*.png
