@@ -1,0 +1,18 @@
+diff --git a/src/train.py b/src/train.py
+index 05ab0b3..2ff47b6 100644
+--- a/src/train.py
++++ b/src/train.py
+@@ -4,10 +4,10 @@ Example usage:
+     python train.py --noise_type crop
+     python train.py --noise_type jitter --train_batch_size 4
+ """
+-from collections import defaultdict
+-import os
++from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
++import os  # Provides functions for interacting with operating system
+ import random
+-from typing import Dict, List
++from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+ 
+ from matplotlib.pyplot import cm as colormap
+ import numpy as np

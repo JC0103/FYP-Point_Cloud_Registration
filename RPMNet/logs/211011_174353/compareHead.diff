@@ -1,0 +1,95 @@
+diff --git a/src/arguments.py b/src/arguments.py
+index 729b842..dc50a44 100644
+--- a/src/arguments.py
++++ b/src/arguments.py
+@@ -1,5 +1,5 @@
+ """Common arguments for train and evaluation for RPMNet"""
+-import argparse
++import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+ 
+ 
+ def rpmnet_arguments():
+diff --git a/src/train.py b/src/train.py
+index 05ab0b3..6c0dcc8 100644
+--- a/src/train.py
++++ b/src/train.py
+@@ -4,19 +4,19 @@ Example usage:
+     python train.py --noise_type crop
+     python train.py --noise_type jitter --train_batch_size 4
+ """
+-from collections import defaultdict
+-import os
++from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
++import os  # Provides functions for interacting with operating system
+ import random
+-from typing import Dict, List
++from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+ 
+ from matplotlib.pyplot import cm as colormap
+ import numpy as np
+-import open3d  # Ensure this is imported before pytorch
+-from tensorboardX import SummaryWriter
+-import torch
+-import torch.nn as nn
+-import torch.utils.data
+-from tqdm import tqdm
++import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
++from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
++import torch                         # use for deep learning aplications using GPU and CPU
++import torch.nn as nn                # use for creating and training of neural network
++import torch.utils.data             # Represents a Python iterable over a dataset,
++from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+ 
+ from arguments import rpmnet_train_arguments
+ from common.colors import BLUE, ORANGE
+@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+ from models.rpmnet import get_model
+ 
+ # Set up arguments and logging
+-parser = rpmnet_train_arguments()
+-_args = parser.parse_args()
++parser = rpmnet_train_arguments() 
++_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+ _logger, _log_path = prepare_logger(_args)
+ if _args.gpu >= 0:
+     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+-    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
++    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+ else:
+     _device = torch.device('cpu')
+ 
+@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+     if loss_type == 'mse':
+         # MSE loss to the groundtruth (does not take into account possible symmetries)
+-        criterion = nn.MSELoss(reduction=reduction)
++        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+         for i in range(num_iter):
+             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+             if reduction.lower() == 'mean':
+@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+     """Perform a single validation run, and saves results into tensorboard summaries"""
+ 
+     _logger.info('Starting validation run...')
+-
++    # torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
++    
+     with torch.no_grad():
+         all_val_losses = defaultdict(list)
+         all_val_metrics_np = defaultdict(list)
+@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+     for k in data_to_rerun:
+         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+     dict_all_to_device(data_to_rerun, _device)
++    # for i in data_to_rerun:
+     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+ 
+     summary_metrics = summarize_metrics(all_val_metrics_np)
+@@ -220,6 +222,7 @@ def run(train_set, val_set):
+     model = get_model(_args)
+     model.to(_device)
+     global_step = 0
++    print(_args.epochs)
+ 
+     # dataloaders
+     train_loader = torch.utils.data.DataLoader(train_set,
