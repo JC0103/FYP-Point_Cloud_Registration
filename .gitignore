@@ -1,6 +1,9 @@
 # datasets
 RPMNet/datasets/
 
+# logs
+RPMNet/logs/
+
 # image files
 *.json
 *.png
