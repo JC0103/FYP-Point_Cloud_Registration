@@ -4,6 +4,9 @@ RPMNet/datasets/
 # logs
 RPMNet/logs/
 
+#RPM_500_epoch
+RPM_500_epoch/
+
 # image files
 *.json
 *.png
