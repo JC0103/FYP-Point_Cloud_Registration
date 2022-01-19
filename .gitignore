@@ -1,5 +1,6 @@
 # datasets
 RPMNet/datasets/
+OverlapPredator/3dmatch/
 
 # logs
 RPMNet/logs/
@@ -10,3 +11,6 @@ RPM_500_epoch/
 # image files
 *.json
 *.png
+
+# virtual env
+predator/
