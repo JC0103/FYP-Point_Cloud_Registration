@@ -11,6 +11,7 @@ from typing import Dict, List # Generic version of dict and list, useful for ann
 
 from matplotlib.pyplot import cm as colormap
 import numpy as np
+from easydict import EasyDict as edict
 import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
 from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
 import torch                         # use for deep learning aplications using GPU and CPU
@@ -23,14 +24,19 @@ from common.colors import BLUE, ORANGE
 from common.misc import prepare_logger
 from common.torch import dict_all_to_device, CheckPointManager, TorchDebugger
 from common.math_torch import se3
+from common.utils import load_config
 from data_loader.datasets import get_train_datasets
 from eval import compute_metrics, summarize_metrics, print_metrics
 from models.rpmnet import get_model
 
 # Set up arguments and logging
 parser = rpmnet_train_arguments() 
+parser.add_argument('config', type=str, help= 'Path to the config file')
 _args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
 _logger, _log_path = prepare_logger(_args)
+config = load_config(_args.config)
+config = edict(config)
+
 if _args.gpu >= 0:
     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
     _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
@@ -39,7 +45,9 @@ else:
 
 
 def main():
-    train_set, val_set = get_train_datasets(_args)
+    
+    
+    train_set, val_set = get_train_datasets(_args, config)
     run(train_set, val_set)
 
 

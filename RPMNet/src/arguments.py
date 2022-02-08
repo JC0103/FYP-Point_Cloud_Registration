@@ -18,7 +18,7 @@ def rpmnet_arguments():
                         type=str, metavar='PATH',
                         help='path to the processed dataset. Default: ../datasets/modelnet40_ply_hdf5_2048')
     parser.add_argument('--dataset_type', default='modelnet_hdf',
-                        choices=['modelnet_hdf', 'bunny', 'armadillo', 'buddha', 'dragon'],
+                        choices=['modelnet_hdf', 'bunny', 'armadillo', 'buddha', 'dragon', '3dmatch'],
                         metavar='DATASET', help='dataset type (default: modelnet_hdf)')
     parser.add_argument('--num_points', default=1024, type=int,
                         metavar='N', help='points in point-cloud (default: 1024)')

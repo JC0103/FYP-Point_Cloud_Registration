@@ -13,6 +13,8 @@ import os
 import pickle
 import time
 from typing import Dict, List
+from easydict import EasyDict as edict
+
 
 import numpy as np
 import open3d  # Need to import before torch
@@ -27,6 +29,7 @@ from common.torch import dict_all_to_device, CheckPointManager, to_numpy
 from common.math import se3
 from common.math_torch import se3
 from common.math.so3 import dcm2euler
+from common.utils import load_config
 from data_loader.datasets import get_test_datasets
 import models.rpmnet
 
@@ -282,7 +285,7 @@ def get_model():
 
 def main():
     # Load data_loader
-    test_dataset = get_test_datasets(_args)
+    test_dataset = get_test_datasets(_args, config)
     test_loader = torch.utils.data.DataLoader(test_dataset,
                                               batch_size=_args.val_batch_size, shuffle=False)
 
@@ -304,8 +307,11 @@ def main():
 if __name__ == '__main__':
     # Arguments and logging
     parser = rpmnet_eval_arguments()
+    parser.add_argument('config', type=str, help= 'Path to the config file')
     _args = parser.parse_args()
     _logger, _log_path = prepare_logger(_args, log_path=_args.eval_save_path)
+    config = load_config(_args.config)
+    config = edict(config)
     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
     if _args.gpu >= 0 and (_args.method == 'rpm' or _args.method == 'rpmnet'):
         os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)

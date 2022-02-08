@@ -4,20 +4,23 @@ import argparse
 import logging
 import os
 from typing import List
+from django import conf
 
 import h5py
 import numpy as np
 import open3d as o3d
 from torch.utils.data import Dataset
 import torchvision
+from common.utils import load_obj
 
 import data_loader.transforms as Transforms
+from data_loader.indoor import IndoorDataset
 import common.math.se3 as se3
 
 _logger = logging.getLogger()
 
 
-def get_train_datasets(args: argparse.Namespace):
+def get_train_datasets(args: argparse.Namespace, config):
     train_categories, val_categories = None, None
     if args.train_categoryfile:
         train_categories = [line.rstrip('\n') for line in open(args.train_categoryfile)]
@@ -38,13 +41,19 @@ def get_train_datasets(args: argparse.Namespace):
                                  transform=train_transforms)
         val_data = ModelNetHdf(args.dataset_path, subset='test', categories=val_categories,
                                transform=val_transforms)
+    elif args.dataset_type == '3dmatch':
+        info_train = load_obj(config.train_info)
+        info_val = load_obj(config.val_info)
+
+        train_data = IndoorDataset(info_train, config, data_augmentation = True)
+        val_data = IndoorDataset(info_val, config, data_augmentation = False)
     else:
         raise NotImplementedError
 
     return train_data, val_data
 
 
-def get_test_datasets(args: argparse.Namespace):
+def get_test_datasets(args: argparse.Namespace, config):
     test_categories = None
     if args.test_category_file:
         test_categories = [line.rstrip('\n') for line in open(args.test_category_file)]
@@ -58,6 +67,9 @@ def get_test_datasets(args: argparse.Namespace):
     if args.dataset_type == 'modelnet_hdf':
         test_data = ModelNetHdf(args.dataset_path, subset='test', categories=test_categories,
                                 transform=test_transforms)
+    elif args.dataset_type == '3dmatch':
+        info_benchmark = load_obj(f'configs/indoor/{config.benchmark}.pkl')
+        test_data = IndoorDataset(info_benchmark, config, data_augmentation= False)
     else:
         raise NotImplementedError
 
