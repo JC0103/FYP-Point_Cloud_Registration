@@ -262,12 +262,15 @@ def run(train_set, val_set):
         _logger.info('Begin epoch {} (steps {} - {})'.format(epoch, global_step, global_step + len(train_loader)))
         tbar = tqdm(total=len(train_loader), ncols=100)
         for train_data in train_loader:
+            print("train data type: ", type(train_data))
+
             global_step += 1
 
             optimizer.zero_grad()
 
             # Forward through neural network
             dict_all_to_device(train_data, _device)
+
             pred_transforms, endpoints = model(train_data, _args.num_train_reg_iter)  # Use less iter during training
 
             # Compute loss, and optimize

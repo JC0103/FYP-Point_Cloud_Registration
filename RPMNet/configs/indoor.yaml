@@ -62,12 +62,12 @@ optimiser:
 dataset:
   dataset: indoor
   benchmark: 3DMatch
-  root: ../datasets/data/indoor/
+  root: ../../datasets/data/indoor/
   batch_size: 1 
   num_workers: 6 
   augment_noise: 0.005
-  train_info: configs/indoor/train_info.pkl
-  val_info: configs/indoor/val_info.pkl
+  train_info: ../configs/indoor/train_info.pkl
+  val_info: ../configs/indoor/val_info.pkl
 
 demo:
   src_pcd: assets/cloud_bin_21.pth

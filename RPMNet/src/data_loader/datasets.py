@@ -4,7 +4,6 @@ import argparse
 import logging
 import os
 from typing import List
-from django import conf
 
 import h5py
 import numpy as np
