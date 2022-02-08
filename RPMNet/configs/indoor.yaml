@@ -73,4 +73,3 @@ demo:
   src_pcd: assets/cloud_bin_21.pth
   tgt_pcd: assets/cloud_bin_34.pth
   n_points: 1000
-
