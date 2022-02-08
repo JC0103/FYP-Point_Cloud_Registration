@@ -82,4 +82,14 @@ class IndoorDataset(Dataset):
         # trans = trans.astype(np.float32)
         
         # return src_pcd,tgt_pcd,src_feats,tgt_feats,rot,trans, correspondences, src_pcd, tgt_pcd, torch.ones(1)
+        sample = {}
+        # sample["points_raw"] = 
+        sample["points_src"] = src_pcd
+        sample["points_ref"] = tgt_pcd
+        transform_gt = np.zeros((4,4))
+        transform_gt[:3, :3] = rot
+        transform_gt[:3, 3:4] = trans
+        transform_gt[3,3] = 1
+        sample["transform_gt"] = transform_gt.tolist()
+        print(sample)
         return torch.ones(1)
