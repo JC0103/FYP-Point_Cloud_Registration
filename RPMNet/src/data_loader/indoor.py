@@ -19,7 +19,7 @@ class IndoorDataset(Dataset):
         rot:            [3,3]
         trans:          [3,1]
     """
-    def __init__(self,infos,config,data_augmentation=True):
+    def __init__(self,infos,config,data_augmentation=True, transform=None):
         super(IndoorDataset,self).__init__()
         self.infos = infos
         self.base_dir = config.root
@@ -30,6 +30,8 @@ class IndoorDataset(Dataset):
         self.rot_factor=1.
         self.augment_noise = config.augment_noise
         self.max_points = 30000
+        self.transform = transform
+        print(self.infos)
 
     def __len__(self):
         return len(self.infos['rot'])
@@ -46,31 +48,31 @@ class IndoorDataset(Dataset):
         tgt_pcd = torch.load(tgt_path)
 
         # if we get too many points, we do some downsampling
-        if(src_pcd.shape[0] > self.max_points):
-            idx = np.random.permutation(src_pcd.shape[0])[:self.max_points]
-            src_pcd = src_pcd[idx]
-        if(tgt_pcd.shape[0] > self.max_points):
-            idx = np.random.permutation(tgt_pcd.shape[0])[:self.max_points]
-            tgt_pcd = tgt_pcd[idx]
+        # if(src_pcd.shape[0] > self.max_points):
+        #     idx = np.random.permutation(src_pcd.shape[0])[:self.max_points]
+        #     src_pcd = src_pcd[idx]
+        # if(tgt_pcd.shape[0] > self.max_points):
+        #     idx = np.random.permutation(tgt_pcd.shape[0])[:self.max_points]
+        #     tgt_pcd = tgt_pcd[idx]
 
-        # add gaussian noise
-        if self.data_augmentation:            
-            # rotate the point cloud
-            euler_ab=np.random.rand(3)*np.pi*2/self.rot_factor # anglez, angley, anglex
-            rot_ab= Rotation.from_euler('zyx', euler_ab).as_matrix()
-            if(np.random.rand(1)[0]>0.5):
-                src_pcd=np.matmul(rot_ab,src_pcd.T).T
-                rot=np.matmul(rot,rot_ab.T)
-            else:
-                tgt_pcd=np.matmul(rot_ab,tgt_pcd.T).T
-                rot=np.matmul(rot_ab,rot)
-                trans=np.matmul(rot_ab,trans)
+        # # add gaussian noise
+        # if self.data_augmentation:            
+        #     # rotate the point cloud
+        #     euler_ab=np.random.rand(3)*np.pi*2/self.rot_factor # anglez, angley, anglex
+        #     rot_ab= Rotation.from_euler('zyx', euler_ab).as_matrix()
+        #     if(np.random.rand(1)[0]>0.5):
+        #         src_pcd=np.matmul(rot_ab,src_pcd.T).T
+        #         rot=np.matmul(rot,rot_ab.T)
+        #     else:
+        #         tgt_pcd=np.matmul(rot_ab,tgt_pcd.T).T
+        #         rot=np.matmul(rot_ab,rot)
+        #         trans=np.matmul(rot_ab,trans)
 
-            src_pcd += (np.random.rand(src_pcd.shape[0],3) - 0.5) * self.augment_noise
-            tgt_pcd += (np.random.rand(tgt_pcd.shape[0],3) - 0.5) * self.augment_noise
+        #     src_pcd += (np.random.rand(src_pcd.shape[0],3) - 0.5) * self.augment_noise
+        #     tgt_pcd += (np.random.rand(tgt_pcd.shape[0],3) - 0.5) * self.augment_noise
         
-        if(trans.ndim==1):
-            trans=trans[:,None]
+        # if(trans.ndim==1):
+        #     trans=trans[:,None]
 
         # get correspondence at fine level
         # tsfm = to_tsfm(rot, trans)
@@ -84,12 +86,14 @@ class IndoorDataset(Dataset):
         # return src_pcd,tgt_pcd,src_feats,tgt_feats,rot,trans, correspondences, src_pcd, tgt_pcd, torch.ones(1)
         sample = {}
         # sample["points_raw"] = 
-        sample["points_src"] = src_pcd
-        sample["points_ref"] = tgt_pcd
+        sample["points_src"] = torch.Tensor(src_pcd)
+        sample["points_ref"] = torch.Tensor(tgt_pcd)
         transform_gt = np.zeros((4,4))
         transform_gt[:3, :3] = rot
         transform_gt[:3, 3:4] = trans
         transform_gt[3,3] = 1
-        sample["transform_gt"] = transform_gt.tolist()
+        sample["transform_gt"] = torch.Tensor(transform_gt.tolist())
+        if self.transform:
+            sample = self.transform(sample)       
         print(sample)
-        return torch.ones(1)
+        return sample

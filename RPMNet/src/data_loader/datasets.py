@@ -44,8 +44,8 @@ def get_train_datasets(args: argparse.Namespace, config):
         info_train = load_obj(config.train_info)
         info_val = load_obj(config.val_info)
 
-        train_data = IndoorDataset(info_train, config, data_augmentation = True)
-        val_data = IndoorDataset(info_val, config, data_augmentation = False)
+        train_data = IndoorDataset(info_train, config, data_augmentation = True, transform=train_transforms)
+        val_data = IndoorDataset(info_val, config, data_augmentation = False, transform=val_transforms)
     else:
         raise NotImplementedError
 
