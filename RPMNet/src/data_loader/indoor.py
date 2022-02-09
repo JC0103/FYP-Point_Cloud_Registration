@@ -31,7 +31,7 @@ class IndoorDataset(Dataset):
         self.augment_noise = config.augment_noise
         self.max_points = 30000
         self.transform = transform
-        print(self.infos)
+        # print(self.infos)
 
     def __len__(self):
         return len(self.infos['rot'])
@@ -44,6 +44,14 @@ class IndoorDataset(Dataset):
         # get pointcloud
         src_path=os.path.join(self.base_dir,self.infos['src'][item])
         tgt_path=os.path.join(self.base_dir,self.infos['tgt'][item])
+
+        # print(self.infos.keys())       
+        # print("src path: ", src_path)
+        # print("tgt path: ", tgt_path)
+        # for key, value in self.infos.items:
+        #     print ("Key", key)
+
+
         src_pcd = torch.load(src_path)
         tgt_pcd = torch.load(tgt_path)
 
@@ -85,7 +93,7 @@ class IndoorDataset(Dataset):
         
         # return src_pcd,tgt_pcd,src_feats,tgt_feats,rot,trans, correspondences, src_pcd, tgt_pcd, torch.ones(1)
         sample = {}
-        # sample["points_raw"] = 
+        sample["points_raw"] = torch.Tensor(src_pcd)
         sample["points_src"] = torch.Tensor(src_pcd)
         sample["points_ref"] = torch.Tensor(tgt_pcd)
         transform_gt = np.zeros((4,4))
