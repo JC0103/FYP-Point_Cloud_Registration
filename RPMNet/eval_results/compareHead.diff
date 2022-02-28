@@ -1,0 +1,3281 @@
+diff --git a/RPMNet/logs/210816_235314/compareHead.diff b/RPMNet/logs/210816_235314/compareHead.diff
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210818_133341/compareHead.diff b/RPMNet/logs/210818_133341/compareHead.diff
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210818_133529/compareHead.diff b/RPMNet/logs/210818_133529/compareHead.diff
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210818_142407/ckpt/checkpoints.txt b/RPMNet/logs/210818_142407/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210818_142407/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210818_142407/compareHead.diff b/RPMNet/logs/210818_142407/compareHead.diff
+deleted file mode 100644
+index 05a7ba1..0000000
+--- a/RPMNet/logs/210818_142407/compareHead.diff
++++ /dev/null
+@@ -1,18 +0,0 @@
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..2ff47b6 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,10 +4,10 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+diff --git a/RPMNet/logs/210818_142407/train/events.out.tfevents.1629268233.ubuntu-20-04 b/RPMNet/logs/210818_142407/train/events.out.tfevents.1629268233.ubuntu-20-04
+deleted file mode 100644
+index f670888..0000000
+Binary files a/RPMNet/logs/210818_142407/train/events.out.tfevents.1629268233.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210818_142407/val/events.out.tfevents.1629268233.ubuntu-20-04 b/RPMNet/logs/210818_142407/val/events.out.tfevents.1629268233.ubuntu-20-04
+deleted file mode 100644
+index 5059190..0000000
+Binary files a/RPMNet/logs/210818_142407/val/events.out.tfevents.1629268233.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210818_142538/compareHead.diff b/RPMNet/logs/210818_142538/compareHead.diff
+deleted file mode 100644
+index 05a7ba1..0000000
+--- a/RPMNet/logs/210818_142538/compareHead.diff
++++ /dev/null
+@@ -1,18 +0,0 @@
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..2ff47b6 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,10 +4,10 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+diff --git a/RPMNet/logs/210823_160402/compareHead.diff b/RPMNet/logs/210823_160402/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210823_160402/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210823_160555/ckpt/checkpoints.txt b/RPMNet/logs/210823_160555/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210823_160555/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210823_160555/compareHead.diff b/RPMNet/logs/210823_160555/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210823_160555/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210823_160555/train/events.out.tfevents.1629706359.ubuntu-20-04 b/RPMNet/logs/210823_160555/train/events.out.tfevents.1629706359.ubuntu-20-04
+deleted file mode 100644
+index 0c74c5d..0000000
+Binary files a/RPMNet/logs/210823_160555/train/events.out.tfevents.1629706359.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210823_160555/val/events.out.tfevents.1629706359.ubuntu-20-04 b/RPMNet/logs/210823_160555/val/events.out.tfevents.1629706359.ubuntu-20-04
+deleted file mode 100644
+index 1effa1e..0000000
+Binary files a/RPMNet/logs/210823_160555/val/events.out.tfevents.1629706359.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210823_171623/compareHead.diff b/RPMNet/logs/210823_171623/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210823_171623/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210823_183532/compareHead.diff b/RPMNet/logs/210823_183532/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210823_183532/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210823_183901/ckpt/checkpoints.txt b/RPMNet/logs/210823_183901/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210823_183901/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210823_183901/compareHead.diff b/RPMNet/logs/210823_183901/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210823_183901/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210823_183901/train/events.out.tfevents.1629715615.ubuntu-20-04 b/RPMNet/logs/210823_183901/train/events.out.tfevents.1629715615.ubuntu-20-04
+deleted file mode 100644
+index 4e9372d..0000000
+Binary files a/RPMNet/logs/210823_183901/train/events.out.tfevents.1629715615.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210823_183901/val/events.out.tfevents.1629715615.ubuntu-20-04 b/RPMNet/logs/210823_183901/val/events.out.tfevents.1629715615.ubuntu-20-04
+deleted file mode 100644
+index 1e48ff7..0000000
+Binary files a/RPMNet/logs/210823_183901/val/events.out.tfevents.1629715615.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210823_185516/ckpt/checkpoints.txt b/RPMNet/logs/210823_185516/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210823_185516/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210823_185516/compareHead.diff b/RPMNet/logs/210823_185516/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210823_185516/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210823_185516/train/events.out.tfevents.1629716628.ubuntu-20-04 b/RPMNet/logs/210823_185516/train/events.out.tfevents.1629716628.ubuntu-20-04
+deleted file mode 100644
+index 1b59cfb..0000000
+Binary files a/RPMNet/logs/210823_185516/train/events.out.tfevents.1629716628.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210823_185516/val/events.out.tfevents.1629716628.ubuntu-20-04 b/RPMNet/logs/210823_185516/val/events.out.tfevents.1629716628.ubuntu-20-04
+deleted file mode 100644
+index cb93a66..0000000
+Binary files a/RPMNet/logs/210823_185516/val/events.out.tfevents.1629716628.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_151001/ckpt/checkpoints.txt b/RPMNet/logs/210825_151001/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210825_151001/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210825_151001/compareHead.diff b/RPMNet/logs/210825_151001/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210825_151001/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210825_151001/train/events.out.tfevents.1629875882.ubuntu-20-04 b/RPMNet/logs/210825_151001/train/events.out.tfevents.1629875882.ubuntu-20-04
+deleted file mode 100644
+index be3e5d5..0000000
+Binary files a/RPMNet/logs/210825_151001/train/events.out.tfevents.1629875882.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_151001/val/events.out.tfevents.1629875882.ubuntu-20-04 b/RPMNet/logs/210825_151001/val/events.out.tfevents.1629875882.ubuntu-20-04
+deleted file mode 100644
+index fe93a87..0000000
+Binary files a/RPMNet/logs/210825_151001/val/events.out.tfevents.1629875882.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_153832/ckpt/checkpoints.txt b/RPMNet/logs/210825_153832/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210825_153832/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210825_153832/compareHead.diff b/RPMNet/logs/210825_153832/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210825_153832/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210825_153832/train/events.out.tfevents.1629877116.ubuntu-20-04 b/RPMNet/logs/210825_153832/train/events.out.tfevents.1629877116.ubuntu-20-04
+deleted file mode 100644
+index 55f5a01..0000000
+Binary files a/RPMNet/logs/210825_153832/train/events.out.tfevents.1629877116.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_153832/val/events.out.tfevents.1629877116.ubuntu-20-04 b/RPMNet/logs/210825_153832/val/events.out.tfevents.1629877116.ubuntu-20-04
+deleted file mode 100644
+index 0e324aa..0000000
+Binary files a/RPMNet/logs/210825_153832/val/events.out.tfevents.1629877116.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_154137/ckpt/checkpoints.txt b/RPMNet/logs/210825_154137/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210825_154137/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210825_154137/compareHead.diff b/RPMNet/logs/210825_154137/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210825_154137/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210825_154137/train/events.out.tfevents.1629877300.ubuntu-20-04 b/RPMNet/logs/210825_154137/train/events.out.tfevents.1629877300.ubuntu-20-04
+deleted file mode 100644
+index c0150b3..0000000
+Binary files a/RPMNet/logs/210825_154137/train/events.out.tfevents.1629877300.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_154137/val/events.out.tfevents.1629877300.ubuntu-20-04 b/RPMNet/logs/210825_154137/val/events.out.tfevents.1629877300.ubuntu-20-04
+deleted file mode 100644
+index f59e1f1..0000000
+Binary files a/RPMNet/logs/210825_154137/val/events.out.tfevents.1629877300.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_161907/ckpt/checkpoints.txt b/RPMNet/logs/210825_161907/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210825_161907/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210825_161907/compareHead.diff b/RPMNet/logs/210825_161907/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210825_161907/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210825_161907/train/events.out.tfevents.1629879554.ubuntu-20-04 b/RPMNet/logs/210825_161907/train/events.out.tfevents.1629879554.ubuntu-20-04
+deleted file mode 100644
+index 04de53b..0000000
+Binary files a/RPMNet/logs/210825_161907/train/events.out.tfevents.1629879554.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_161907/val/events.out.tfevents.1629879554.ubuntu-20-04 b/RPMNet/logs/210825_161907/val/events.out.tfevents.1629879554.ubuntu-20-04
+deleted file mode 100644
+index 586a026..0000000
+Binary files a/RPMNet/logs/210825_161907/val/events.out.tfevents.1629879554.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_162502/ckpt/checkpoints.txt b/RPMNet/logs/210825_162502/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210825_162502/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210825_162502/compareHead.diff b/RPMNet/logs/210825_162502/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210825_162502/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210825_162502/train/events.out.tfevents.1629879908.ubuntu-20-04 b/RPMNet/logs/210825_162502/train/events.out.tfevents.1629879908.ubuntu-20-04
+deleted file mode 100644
+index eb237ba..0000000
+Binary files a/RPMNet/logs/210825_162502/train/events.out.tfevents.1629879908.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210825_162502/val/events.out.tfevents.1629879908.ubuntu-20-04 b/RPMNet/logs/210825_162502/val/events.out.tfevents.1629879908.ubuntu-20-04
+deleted file mode 100644
+index c82dea4..0000000
+Binary files a/RPMNet/logs/210825_162502/val/events.out.tfevents.1629879908.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_152313/ckpt/checkpoints.txt b/RPMNet/logs/210830_152313/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_152313/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_152313/compareHead.diff b/RPMNet/logs/210830_152313/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_152313/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_152313/train/events.out.tfevents.1630308199.ubuntu-20-04 b/RPMNet/logs/210830_152313/train/events.out.tfevents.1630308199.ubuntu-20-04
+deleted file mode 100644
+index ad6c69b..0000000
+Binary files a/RPMNet/logs/210830_152313/train/events.out.tfevents.1630308199.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_152313/val/events.out.tfevents.1630308199.ubuntu-20-04 b/RPMNet/logs/210830_152313/val/events.out.tfevents.1630308199.ubuntu-20-04
+deleted file mode 100644
+index 9d09d79..0000000
+Binary files a/RPMNet/logs/210830_152313/val/events.out.tfevents.1630308199.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_152352/ckpt/checkpoints.txt b/RPMNet/logs/210830_152352/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_152352/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_152352/compareHead.diff b/RPMNet/logs/210830_152352/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_152352/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_152352/train/events.out.tfevents.1630308238.ubuntu-20-04 b/RPMNet/logs/210830_152352/train/events.out.tfevents.1630308238.ubuntu-20-04
+deleted file mode 100644
+index f3437ef..0000000
+Binary files a/RPMNet/logs/210830_152352/train/events.out.tfevents.1630308238.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_152352/val/events.out.tfevents.1630308238.ubuntu-20-04 b/RPMNet/logs/210830_152352/val/events.out.tfevents.1630308238.ubuntu-20-04
+deleted file mode 100644
+index 278b415..0000000
+Binary files a/RPMNet/logs/210830_152352/val/events.out.tfevents.1630308238.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_152410/ckpt/checkpoints.txt b/RPMNet/logs/210830_152410/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_152410/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_152410/compareHead.diff b/RPMNet/logs/210830_152410/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_152410/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_152410/train/events.out.tfevents.1630308256.ubuntu-20-04 b/RPMNet/logs/210830_152410/train/events.out.tfevents.1630308256.ubuntu-20-04
+deleted file mode 100644
+index 62ccb72..0000000
+Binary files a/RPMNet/logs/210830_152410/train/events.out.tfevents.1630308256.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_152410/val/events.out.tfevents.1630308256.ubuntu-20-04 b/RPMNet/logs/210830_152410/val/events.out.tfevents.1630308256.ubuntu-20-04
+deleted file mode 100644
+index 4478d5d..0000000
+Binary files a/RPMNet/logs/210830_152410/val/events.out.tfevents.1630308256.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_155745/ckpt/checkpoints.txt b/RPMNet/logs/210830_155745/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_155745/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_155745/compareHead.diff b/RPMNet/logs/210830_155745/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_155745/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_155745/train/events.out.tfevents.1630310271.ubuntu-20-04 b/RPMNet/logs/210830_155745/train/events.out.tfevents.1630310271.ubuntu-20-04
+deleted file mode 100644
+index 92769c1..0000000
+Binary files a/RPMNet/logs/210830_155745/train/events.out.tfevents.1630310271.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_155745/val/events.out.tfevents.1630310271.ubuntu-20-04 b/RPMNet/logs/210830_155745/val/events.out.tfevents.1630310271.ubuntu-20-04
+deleted file mode 100644
+index 76d9b44..0000000
+Binary files a/RPMNet/logs/210830_155745/val/events.out.tfevents.1630310271.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_160024/ckpt/checkpoints.txt b/RPMNet/logs/210830_160024/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_160024/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_160024/compareHead.diff b/RPMNet/logs/210830_160024/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_160024/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_160024/train/events.out.tfevents.1630310430.ubuntu-20-04 b/RPMNet/logs/210830_160024/train/events.out.tfevents.1630310430.ubuntu-20-04
+deleted file mode 100644
+index e79512e..0000000
+Binary files a/RPMNet/logs/210830_160024/train/events.out.tfevents.1630310430.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_160024/val/events.out.tfevents.1630310430.ubuntu-20-04 b/RPMNet/logs/210830_160024/val/events.out.tfevents.1630310430.ubuntu-20-04
+deleted file mode 100644
+index 7fa88c1..0000000
+Binary files a/RPMNet/logs/210830_160024/val/events.out.tfevents.1630310430.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_160709/ckpt/checkpoints.txt b/RPMNet/logs/210830_160709/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_160709/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_160709/compareHead.diff b/RPMNet/logs/210830_160709/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_160709/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_160709/train/events.out.tfevents.1630310835.ubuntu-20-04 b/RPMNet/logs/210830_160709/train/events.out.tfevents.1630310835.ubuntu-20-04
+deleted file mode 100644
+index dac63ab..0000000
+Binary files a/RPMNet/logs/210830_160709/train/events.out.tfevents.1630310835.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_160709/val/events.out.tfevents.1630310835.ubuntu-20-04 b/RPMNet/logs/210830_160709/val/events.out.tfevents.1630310835.ubuntu-20-04
+deleted file mode 100644
+index d32bd87..0000000
+Binary files a/RPMNet/logs/210830_160709/val/events.out.tfevents.1630310835.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_164804/ckpt/checkpoints.txt b/RPMNet/logs/210830_164804/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_164804/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_164804/compareHead.diff b/RPMNet/logs/210830_164804/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_164804/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_164804/train/events.out.tfevents.1630313290.ubuntu-20-04 b/RPMNet/logs/210830_164804/train/events.out.tfevents.1630313290.ubuntu-20-04
+deleted file mode 100644
+index 7b81f40..0000000
+Binary files a/RPMNet/logs/210830_164804/train/events.out.tfevents.1630313290.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_164804/val/events.out.tfevents.1630313290.ubuntu-20-04 b/RPMNet/logs/210830_164804/val/events.out.tfevents.1630313290.ubuntu-20-04
+deleted file mode 100644
+index 66e1437..0000000
+Binary files a/RPMNet/logs/210830_164804/val/events.out.tfevents.1630313290.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_171514/ckpt/checkpoints.txt b/RPMNet/logs/210830_171514/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210830_171514/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210830_171514/compareHead.diff b/RPMNet/logs/210830_171514/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210830_171514/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210830_171514/train/events.out.tfevents.1630314919.ubuntu-20-04 b/RPMNet/logs/210830_171514/train/events.out.tfevents.1630314919.ubuntu-20-04
+deleted file mode 100644
+index cc44199..0000000
+Binary files a/RPMNet/logs/210830_171514/train/events.out.tfevents.1630314919.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210830_171514/val/events.out.tfevents.1630314919.ubuntu-20-04 b/RPMNet/logs/210830_171514/val/events.out.tfevents.1630314919.ubuntu-20-04
+deleted file mode 100644
+index c3f9e5f..0000000
+Binary files a/RPMNet/logs/210830_171514/val/events.out.tfevents.1630314919.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_201135/ckpt/checkpoints.txt b/RPMNet/logs/210907_201135/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_201135/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_201135/compareHead.diff b/RPMNet/logs/210907_201135/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_201135/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_201135/train/events.out.tfevents.1631016704.ubuntu-20-04 b/RPMNet/logs/210907_201135/train/events.out.tfevents.1631016704.ubuntu-20-04
+deleted file mode 100644
+index 491c507..0000000
+Binary files a/RPMNet/logs/210907_201135/train/events.out.tfevents.1631016704.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_201135/val/events.out.tfevents.1631016704.ubuntu-20-04 b/RPMNet/logs/210907_201135/val/events.out.tfevents.1631016704.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210907_210025/ckpt/checkpoints.txt b/RPMNet/logs/210907_210025/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_210025/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_210025/compareHead.diff b/RPMNet/logs/210907_210025/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_210025/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_210025/train/events.out.tfevents.1631019629.ubuntu-20-04 b/RPMNet/logs/210907_210025/train/events.out.tfevents.1631019629.ubuntu-20-04
+deleted file mode 100644
+index 556dc63..0000000
+Binary files a/RPMNet/logs/210907_210025/train/events.out.tfevents.1631019629.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_210025/val/events.out.tfevents.1631019629.ubuntu-20-04 b/RPMNet/logs/210907_210025/val/events.out.tfevents.1631019629.ubuntu-20-04
+deleted file mode 100644
+index 4c29718..0000000
+Binary files a/RPMNet/logs/210907_210025/val/events.out.tfevents.1631019629.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_210056/ckpt/checkpoints.txt b/RPMNet/logs/210907_210056/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_210056/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_210056/compareHead.diff b/RPMNet/logs/210907_210056/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_210056/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_210056/train/events.out.tfevents.1631019659.ubuntu-20-04 b/RPMNet/logs/210907_210056/train/events.out.tfevents.1631019659.ubuntu-20-04
+deleted file mode 100644
+index 7b7c207..0000000
+Binary files a/RPMNet/logs/210907_210056/train/events.out.tfevents.1631019659.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_210056/val/events.out.tfevents.1631019659.ubuntu-20-04 b/RPMNet/logs/210907_210056/val/events.out.tfevents.1631019659.ubuntu-20-04
+deleted file mode 100644
+index ec22069..0000000
+Binary files a/RPMNet/logs/210907_210056/val/events.out.tfevents.1631019659.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_210432/ckpt/checkpoints.txt b/RPMNet/logs/210907_210432/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_210432/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_210432/compareHead.diff b/RPMNet/logs/210907_210432/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_210432/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_210432/train/events.out.tfevents.1631019878.ubuntu-20-04 b/RPMNet/logs/210907_210432/train/events.out.tfevents.1631019878.ubuntu-20-04
+deleted file mode 100644
+index dcc81e0..0000000
+Binary files a/RPMNet/logs/210907_210432/train/events.out.tfevents.1631019878.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_210432/val/events.out.tfevents.1631019878.ubuntu-20-04 b/RPMNet/logs/210907_210432/val/events.out.tfevents.1631019878.ubuntu-20-04
+deleted file mode 100644
+index 5502fbb..0000000
+Binary files a/RPMNet/logs/210907_210432/val/events.out.tfevents.1631019878.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_212627/ckpt/checkpoints.txt b/RPMNet/logs/210907_212627/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_212627/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_212627/compareHead.diff b/RPMNet/logs/210907_212627/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_212627/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_212627/train/events.out.tfevents.1631021194.ubuntu-20-04 b/RPMNet/logs/210907_212627/train/events.out.tfevents.1631021194.ubuntu-20-04
+deleted file mode 100644
+index 29ffc06..0000000
+Binary files a/RPMNet/logs/210907_212627/train/events.out.tfevents.1631021194.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_212627/val/events.out.tfevents.1631021194.ubuntu-20-04 b/RPMNet/logs/210907_212627/val/events.out.tfevents.1631021194.ubuntu-20-04
+deleted file mode 100644
+index 9a1206c..0000000
+Binary files a/RPMNet/logs/210907_212627/val/events.out.tfevents.1631021194.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_214828/ckpt/checkpoints.txt b/RPMNet/logs/210907_214828/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_214828/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_214828/compareHead.diff b/RPMNet/logs/210907_214828/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_214828/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_214828/train/events.out.tfevents.1631022514.ubuntu-20-04 b/RPMNet/logs/210907_214828/train/events.out.tfevents.1631022514.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210907_214828/val/events.out.tfevents.1631022514.ubuntu-20-04 b/RPMNet/logs/210907_214828/val/events.out.tfevents.1631022514.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210907_220241/ckpt/checkpoints.txt b/RPMNet/logs/210907_220241/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_220241/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_220241/compareHead.diff b/RPMNet/logs/210907_220241/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_220241/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_220241/train/events.out.tfevents.1631023366.ubuntu-20-04 b/RPMNet/logs/210907_220241/train/events.out.tfevents.1631023366.ubuntu-20-04
+deleted file mode 100644
+index 5252142..0000000
+Binary files a/RPMNet/logs/210907_220241/train/events.out.tfevents.1631023366.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_220241/val/events.out.tfevents.1631023366.ubuntu-20-04 b/RPMNet/logs/210907_220241/val/events.out.tfevents.1631023366.ubuntu-20-04
+deleted file mode 100644
+index e56edd8..0000000
+Binary files a/RPMNet/logs/210907_220241/val/events.out.tfevents.1631023366.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_222621/ckpt/checkpoints.txt b/RPMNet/logs/210907_222621/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210907_222621/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210907_222621/compareHead.diff b/RPMNet/logs/210907_222621/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_222621/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210907_222621/train/events.out.tfevents.1631024787.ubuntu-20-04 b/RPMNet/logs/210907_222621/train/events.out.tfevents.1631024787.ubuntu-20-04
+deleted file mode 100644
+index c65de97..0000000
+Binary files a/RPMNet/logs/210907_222621/train/events.out.tfevents.1631024787.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_222621/val/events.out.tfevents.1631024787.ubuntu-20-04 b/RPMNet/logs/210907_222621/val/events.out.tfevents.1631024787.ubuntu-20-04
+deleted file mode 100644
+index bae8d01..0000000
+Binary files a/RPMNet/logs/210907_222621/val/events.out.tfevents.1631024787.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210907_224842/compareHead.diff b/RPMNet/logs/210907_224842/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210907_224842/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_114429/ckpt/checkpoints.txt b/RPMNet/logs/210908_114429/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210908_114429/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210908_114429/compareHead.diff b/RPMNet/logs/210908_114429/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210908_114429/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_114429/train/events.out.tfevents.1631072676.ubuntu-20-04 b/RPMNet/logs/210908_114429/train/events.out.tfevents.1631072676.ubuntu-20-04
+deleted file mode 100644
+index 6e112f8..0000000
+Binary files a/RPMNet/logs/210908_114429/train/events.out.tfevents.1631072676.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_114429/val/events.out.tfevents.1631072676.ubuntu-20-04 b/RPMNet/logs/210908_114429/val/events.out.tfevents.1631072676.ubuntu-20-04
+deleted file mode 100644
+index 18add51..0000000
+Binary files a/RPMNet/logs/210908_114429/val/events.out.tfevents.1631072676.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_114457/ckpt/checkpoints.txt b/RPMNet/logs/210908_114457/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210908_114457/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210908_114457/compareHead.diff b/RPMNet/logs/210908_114457/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210908_114457/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_114457/train/events.out.tfevents.1631072703.ubuntu-20-04 b/RPMNet/logs/210908_114457/train/events.out.tfevents.1631072703.ubuntu-20-04
+deleted file mode 100644
+index 78edc17..0000000
+Binary files a/RPMNet/logs/210908_114457/train/events.out.tfevents.1631072703.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_114457/val/events.out.tfevents.1631072703.ubuntu-20-04 b/RPMNet/logs/210908_114457/val/events.out.tfevents.1631072703.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210908_121706/ckpt/checkpoints.txt b/RPMNet/logs/210908_121706/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210908_121706/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210908_121706/compareHead.diff b/RPMNet/logs/210908_121706/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210908_121706/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_121706/train/events.out.tfevents.1631074632.ubuntu-20-04 b/RPMNet/logs/210908_121706/train/events.out.tfevents.1631074632.ubuntu-20-04
+deleted file mode 100644
+index d9be840..0000000
+Binary files a/RPMNet/logs/210908_121706/train/events.out.tfevents.1631074632.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_121706/val/events.out.tfevents.1631074632.ubuntu-20-04 b/RPMNet/logs/210908_121706/val/events.out.tfevents.1631074632.ubuntu-20-04
+deleted file mode 100644
+index 5172c66..0000000
+Binary files a/RPMNet/logs/210908_121706/val/events.out.tfevents.1631074632.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_142939/ckpt/checkpoints.txt b/RPMNet/logs/210908_142939/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210908_142939/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210908_142939/compareHead.diff b/RPMNet/logs/210908_142939/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210908_142939/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_142939/train/events.out.tfevents.1631082585.ubuntu-20-04 b/RPMNet/logs/210908_142939/train/events.out.tfevents.1631082585.ubuntu-20-04
+deleted file mode 100644
+index 2a66bcb..0000000
+Binary files a/RPMNet/logs/210908_142939/train/events.out.tfevents.1631082585.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_142939/val/events.out.tfevents.1631082585.ubuntu-20-04 b/RPMNet/logs/210908_142939/val/events.out.tfevents.1631082585.ubuntu-20-04
+deleted file mode 100644
+index d835275..0000000
+Binary files a/RPMNet/logs/210908_142939/val/events.out.tfevents.1631082585.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_153408/ckpt/checkpoints.txt b/RPMNet/logs/210908_153408/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210908_153408/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210908_153408/compareHead.diff b/RPMNet/logs/210908_153408/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210908_153408/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_153408/train/events.out.tfevents.1631086454.ubuntu-20-04 b/RPMNet/logs/210908_153408/train/events.out.tfevents.1631086454.ubuntu-20-04
+deleted file mode 100644
+index d68ed14..0000000
+Binary files a/RPMNet/logs/210908_153408/train/events.out.tfevents.1631086454.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_153408/val/events.out.tfevents.1631086454.ubuntu-20-04 b/RPMNet/logs/210908_153408/val/events.out.tfevents.1631086454.ubuntu-20-04
+deleted file mode 100644
+index cc6355d..0000000
+Binary files a/RPMNet/logs/210908_153408/val/events.out.tfevents.1631086454.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_153743/ckpt/checkpoints.txt b/RPMNet/logs/210908_153743/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210908_153743/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210908_153743/compareHead.diff b/RPMNet/logs/210908_153743/compareHead.diff
+deleted file mode 100644
+index 69847a8..0000000
+--- a/RPMNet/logs/210908_153743/compareHead.diff
++++ /dev/null
+@@ -1,44 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6d9c78a 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+diff --git a/RPMNet/logs/210908_153743/train/events.out.tfevents.1631086668.ubuntu-20-04 b/RPMNet/logs/210908_153743/train/events.out.tfevents.1631086668.ubuntu-20-04
+deleted file mode 100644
+index e3aff4c..0000000
+Binary files a/RPMNet/logs/210908_153743/train/events.out.tfevents.1631086668.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210908_153743/val/events.out.tfevents.1631086668.ubuntu-20-04 b/RPMNet/logs/210908_153743/val/events.out.tfevents.1631086668.ubuntu-20-04
+deleted file mode 100644
+index c0cf211..0000000
+Binary files a/RPMNet/logs/210908_153743/val/events.out.tfevents.1631086668.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_093944/ckpt/checkpoints.txt b/RPMNet/logs/210915_093944/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210915_093944/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210915_093944/compareHead.diff b/RPMNet/logs/210915_093944/compareHead.diff
+deleted file mode 100644
+index 54e1a70..0000000
+--- a/RPMNet/logs/210915_093944/compareHead.diff
++++ /dev/null
+@@ -1,79 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..98af452 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    torch.cuda.empty_cache()
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+diff --git a/RPMNet/logs/210915_093944/train/events.out.tfevents.1631669991.ubuntu-20-04 b/RPMNet/logs/210915_093944/train/events.out.tfevents.1631669991.ubuntu-20-04
+deleted file mode 100644
+index ec7d076..0000000
+Binary files a/RPMNet/logs/210915_093944/train/events.out.tfevents.1631669991.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_093944/val/events.out.tfevents.1631669991.ubuntu-20-04 b/RPMNet/logs/210915_093944/val/events.out.tfevents.1631669991.ubuntu-20-04
+deleted file mode 100644
+index 07f41c3..0000000
+Binary files a/RPMNet/logs/210915_093944/val/events.out.tfevents.1631669991.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_100407/ckpt/checkpoints.txt b/RPMNet/logs/210915_100407/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210915_100407/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210915_100407/compareHead.diff b/RPMNet/logs/210915_100407/compareHead.diff
+deleted file mode 100644
+index a2ec29c..0000000
+--- a/RPMNet/logs/210915_100407/compareHead.diff
++++ /dev/null
+@@ -1,87 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..dbfee9c 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    torch.cuda.empty_cache()
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+diff --git a/RPMNet/logs/210915_100407/train/events.out.tfevents.1631671453.ubuntu-20-04 b/RPMNet/logs/210915_100407/train/events.out.tfevents.1631671453.ubuntu-20-04
+deleted file mode 100644
+index 4e5d5ed..0000000
+Binary files a/RPMNet/logs/210915_100407/train/events.out.tfevents.1631671453.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_100407/val/events.out.tfevents.1631671453.ubuntu-20-04 b/RPMNet/logs/210915_100407/val/events.out.tfevents.1631671453.ubuntu-20-04
+deleted file mode 100644
+index 63b0cc4..0000000
+Binary files a/RPMNet/logs/210915_100407/val/events.out.tfevents.1631671453.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_100421/ckpt/checkpoints.txt b/RPMNet/logs/210915_100421/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210915_100421/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210915_100421/compareHead.diff b/RPMNet/logs/210915_100421/compareHead.diff
+deleted file mode 100644
+index a2ec29c..0000000
+--- a/RPMNet/logs/210915_100421/compareHead.diff
++++ /dev/null
+@@ -1,87 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..dbfee9c 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    torch.cuda.empty_cache()
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+diff --git a/RPMNet/logs/210915_100421/train/events.out.tfevents.1631671467.ubuntu-20-04 b/RPMNet/logs/210915_100421/train/events.out.tfevents.1631671467.ubuntu-20-04
+deleted file mode 100644
+index f6d3bce..0000000
+Binary files a/RPMNet/logs/210915_100421/train/events.out.tfevents.1631671467.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_100421/val/events.out.tfevents.1631671467.ubuntu-20-04 b/RPMNet/logs/210915_100421/val/events.out.tfevents.1631671467.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210915_100731/ckpt/checkpoints.txt b/RPMNet/logs/210915_100731/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210915_100731/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210915_100731/compareHead.diff b/RPMNet/logs/210915_100731/compareHead.diff
+deleted file mode 100644
+index a2ec29c..0000000
+--- a/RPMNet/logs/210915_100731/compareHead.diff
++++ /dev/null
+@@ -1,87 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..dbfee9c 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    torch.cuda.empty_cache()
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+diff --git a/RPMNet/logs/210915_100731/train/events.out.tfevents.1631671658.ubuntu-20-04 b/RPMNet/logs/210915_100731/train/events.out.tfevents.1631671658.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210915_100731/val/events.out.tfevents.1631671658.ubuntu-20-04 b/RPMNet/logs/210915_100731/val/events.out.tfevents.1631671658.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210915_100937/ckpt/checkpoints.txt b/RPMNet/logs/210915_100937/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210915_100937/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210915_100937/compareHead.diff b/RPMNet/logs/210915_100937/compareHead.diff
+deleted file mode 100644
+index a2ec29c..0000000
+--- a/RPMNet/logs/210915_100937/compareHead.diff
++++ /dev/null
+@@ -1,87 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..dbfee9c 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    torch.cuda.empty_cache()
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+diff --git a/RPMNet/logs/210915_100937/train/events.out.tfevents.1631671784.ubuntu-20-04 b/RPMNet/logs/210915_100937/train/events.out.tfevents.1631671784.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210915_100937/val/events.out.tfevents.1631671784.ubuntu-20-04 b/RPMNet/logs/210915_100937/val/events.out.tfevents.1631671784.ubuntu-20-04
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/RPMNet/logs/210915_101108/ckpt/checkpoints.txt b/RPMNet/logs/210915_101108/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/210915_101108/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/210915_101108/compareHead.diff b/RPMNet/logs/210915_101108/compareHead.diff
+deleted file mode 100644
+index a2ec29c..0000000
+--- a/RPMNet/logs/210915_101108/compareHead.diff
++++ /dev/null
+@@ -1,87 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..dbfee9c 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    torch.cuda.empty_cache()
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+diff --git a/RPMNet/logs/210915_101108/train/events.out.tfevents.1631671874.ubuntu-20-04 b/RPMNet/logs/210915_101108/train/events.out.tfevents.1631671874.ubuntu-20-04
+deleted file mode 100644
+index a10d6a9..0000000
+Binary files a/RPMNet/logs/210915_101108/train/events.out.tfevents.1631671874.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/210915_101108/val/events.out.tfevents.1631671874.ubuntu-20-04 b/RPMNet/logs/210915_101108/val/events.out.tfevents.1631671874.ubuntu-20-04
+deleted file mode 100644
+index 8b9b698..0000000
+Binary files a/RPMNet/logs/210915_101108/val/events.out.tfevents.1631671874.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/211011_174353/ckpt/checkpoints.txt b/RPMNet/logs/211011_174353/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/211011_174353/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/211011_174353/compareHead.diff b/RPMNet/logs/211011_174353/compareHead.diff
+deleted file mode 100644
+index 5c844d3..0000000
+--- a/RPMNet/logs/211011_174353/compareHead.diff
++++ /dev/null
+@@ -1,95 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6c0dcc8 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    # torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    # for i in data_to_rerun:
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+-@@ -220,6 +222,7 @@ def run(train_set, val_set):
+-     model = get_model(_args)
+-     model.to(_device)
+-     global_step = 0
+-+    print(_args.epochs)
+- 
+-     # dataloaders
+-     train_loader = torch.utils.data.DataLoader(train_set,
+diff --git a/RPMNet/logs/211011_174353/train/events.out.tfevents.1633945441.ubuntu-20-04 b/RPMNet/logs/211011_174353/train/events.out.tfevents.1633945441.ubuntu-20-04
+deleted file mode 100644
+index 3142211..0000000
+Binary files a/RPMNet/logs/211011_174353/train/events.out.tfevents.1633945441.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/211011_174353/val/events.out.tfevents.1633945441.ubuntu-20-04 b/RPMNet/logs/211011_174353/val/events.out.tfevents.1633945441.ubuntu-20-04
+deleted file mode 100644
+index f1740aa..0000000
+Binary files a/RPMNet/logs/211011_174353/val/events.out.tfevents.1633945441.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/211012_085948/ckpt/checkpoints.txt b/RPMNet/logs/211012_085948/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/211012_085948/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/211012_085948/compareHead.diff b/RPMNet/logs/211012_085948/compareHead.diff
+deleted file mode 100644
+index 5c844d3..0000000
+--- a/RPMNet/logs/211012_085948/compareHead.diff
++++ /dev/null
+@@ -1,95 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6c0dcc8 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    # torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    # for i in data_to_rerun:
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+-@@ -220,6 +222,7 @@ def run(train_set, val_set):
+-     model = get_model(_args)
+-     model.to(_device)
+-     global_step = 0
+-+    print(_args.epochs)
+- 
+-     # dataloaders
+-     train_loader = torch.utils.data.DataLoader(train_set,
+diff --git a/RPMNet/logs/211012_085948/train/events.out.tfevents.1634000395.ubuntu-20-04 b/RPMNet/logs/211012_085948/train/events.out.tfevents.1634000395.ubuntu-20-04
+deleted file mode 100644
+index e1d8ab9..0000000
+Binary files a/RPMNet/logs/211012_085948/train/events.out.tfevents.1634000395.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/211012_085948/val/events.out.tfevents.1634000395.ubuntu-20-04 b/RPMNet/logs/211012_085948/val/events.out.tfevents.1634000395.ubuntu-20-04
+deleted file mode 100644
+index 8543845..0000000
+Binary files a/RPMNet/logs/211012_085948/val/events.out.tfevents.1634000395.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/211019_173137/ckpt/checkpoints.txt b/RPMNet/logs/211019_173137/ckpt/checkpoints.txt
+deleted file mode 100644
+index 5a599b4..0000000
+--- a/RPMNet/logs/211019_173137/ckpt/checkpoints.txt
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-Best step: None
+\ No newline at end of file
+diff --git a/RPMNet/logs/211019_173137/compareHead.diff b/RPMNet/logs/211019_173137/compareHead.diff
+deleted file mode 100644
+index 5c844d3..0000000
+--- a/RPMNet/logs/211019_173137/compareHead.diff
++++ /dev/null
+@@ -1,95 +0,0 @@
+-diff --git a/src/arguments.py b/src/arguments.py
+-index 729b842..dc50a44 100644
+---- a/src/arguments.py
+-+++ b/src/arguments.py
+-@@ -1,5 +1,5 @@
+- """Common arguments for train and evaluation for RPMNet"""
+--import argparse
+-+import argparse  # The argparse module makes it easy to write user-friendly command-line interfaces
+- 
+- 
+- def rpmnet_arguments():
+-diff --git a/src/train.py b/src/train.py
+-index 05ab0b3..6c0dcc8 100644
+---- a/src/train.py
+-+++ b/src/train.py
+-@@ -4,19 +4,19 @@ Example usage:
+-     python train.py --noise_type crop
+-     python train.py --noise_type jitter --train_batch_size 4
+- """
+--from collections import defaultdict
+--import os
+-+from collections import defaultdict  # Dict subclass that calls a factory function to supply missing values
+-+import os  # Provides functions for interacting with operating system
+- import random
+--from typing import Dict, List
+-+from typing import Dict, List # Generic version of dict and list, useful for annotating return types
+- 
+- from matplotlib.pyplot import cm as colormap
+- import numpy as np
+--import open3d  # Ensure this is imported before pytorch
+--from tensorboardX import SummaryWriter
+--import torch
+--import torch.nn as nn
+--import torch.utils.data
+--from tqdm import tqdm
+-+import open3d  # Ensure this is imported before pytorch   # Deals with 3D data
+-+from tensorboardX import SummaryWriter # Provide visualisation of traning progress of neural network
+-+import torch                         # use for deep learning aplications using GPU and CPU
+-+import torch.nn as nn                # use for creating and training of neural network
+-+import torch.utils.data             # Represents a Python iterable over a dataset,
+-+from tqdm import tqdm          #Use for creating Progress Meters or Progress Bars
+- 
+- from arguments import rpmnet_train_arguments
+- from common.colors import BLUE, ORANGE
+-@@ -28,12 +28,12 @@ from eval import compute_metrics, summarize_metrics, print_metrics
+- from models.rpmnet import get_model
+- 
+- # Set up arguments and logging
+--parser = rpmnet_train_arguments()
+--_args = parser.parse_args()
+-+parser = rpmnet_train_arguments() 
+-+_args = parser.parse_args()  #https://docs.python.org/3/library/argparse.html
+- _logger, _log_path = prepare_logger(_args)
+- if _args.gpu >= 0:
+-     os.environ['CUDA_VISIBLE_DEVICES'] = str(_args.gpu)
+--    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+-+    _device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')    #check if pytorch is using GPU via CUDA
+- else:
+-     _device = torch.device('cpu')
+- 
+-@@ -67,7 +67,7 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
+-     gt_src_transformed = se3.transform(data['transform_gt'], data['points_src'][..., :3])
+-     if loss_type == 'mse':
+-         # MSE loss to the groundtruth (does not take into account possible symmetries)
+--        criterion = nn.MSELoss(reduction=reduction)
+-+        criterion = nn.MSELoss(reduction=reduction)          ##Create a criterion that measured the MSE between predicted data and ground truth data
+-         for i in range(num_iter):
+-             pred_src_transformed = se3.transform(pred_transforms[i], data['points_src'][..., :3])
+-             if reduction.lower() == 'mean':
+-@@ -166,7 +166,8 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     """Perform a single validation run, and saves results into tensorboard summaries"""
+- 
+-     _logger.info('Starting validation run...')
+--
+-+    # torch.cuda.empty_cache()   #Release the GPU cache reserved by pytorch
+-+    
+-     with torch.no_grad():
+-         all_val_losses = defaultdict(list)
+-         all_val_metrics_np = defaultdict(list)
+-@@ -198,6 +199,7 @@ def validate(data_loader, model: torch.nn.Module, summary_writer: SummaryWriter,
+-     for k in data_to_rerun:
+-         data_to_rerun[k] = torch.from_numpy(np.stack(data_to_rerun[k], axis=0))
+-     dict_all_to_device(data_to_rerun, _device)
+-+    # for i in data_to_rerun:
+-     pred_transforms, endpoints = model(data_to_rerun, _args.num_reg_iter)
+- 
+-     summary_metrics = summarize_metrics(all_val_metrics_np)
+-@@ -220,6 +222,7 @@ def run(train_set, val_set):
+-     model = get_model(_args)
+-     model.to(_device)
+-     global_step = 0
+-+    print(_args.epochs)
+- 
+-     # dataloaders
+-     train_loader = torch.utils.data.DataLoader(train_set,
+diff --git a/RPMNet/logs/211019_173137/train/events.out.tfevents.1634635904.ubuntu-20-04 b/RPMNet/logs/211019_173137/train/events.out.tfevents.1634635904.ubuntu-20-04
+deleted file mode 100644
+index 524fad8..0000000
+Binary files a/RPMNet/logs/211019_173137/train/events.out.tfevents.1634635904.ubuntu-20-04 and /dev/null differ
+diff --git a/RPMNet/logs/211019_173137/val/events.out.tfevents.1634635904.ubuntu-20-04 b/RPMNet/logs/211019_173137/val/events.out.tfevents.1634635904.ubuntu-20-04
+deleted file mode 100644
+index 5009d29..0000000
+Binary files a/RPMNet/logs/211019_173137/val/events.out.tfevents.1634635904.ubuntu-20-04 and /dev/null differ
