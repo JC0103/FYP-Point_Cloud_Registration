@@ -39,6 +39,7 @@ void loop() {
     futaba_servo.write(angle);                  // sets the servo position according to the scaled value
   }                      
   nh.spinOnce();
+  delay(3);
 }
 
 void servoAngleCB(const std_msgs::Int16& msg){
