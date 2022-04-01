@@ -254,7 +254,6 @@ def run(train_set, val_set):
         _logger.info('Begin epoch {} (steps {} - {})'.format(epoch, global_step, global_step + len(train_loader)))
         tbar = tqdm(total=len(train_loader), ncols=100)
         for train_data in train_loader:
-            print("train data type: ", train_data)
             global_step += 1
 
             optimizer.zero_grad()

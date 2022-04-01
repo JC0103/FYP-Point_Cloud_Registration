@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jcchia/FYP/PCD2H5/main.cpp
+iostream
+-
+string
+-
+time.h
+-
+fstream
+-
+my_io.h
+/home/jcchia/FYP/PCD2H5/my_io.h
+
+/home/jcchia/FYP/PCD2H5/my_io.h
+H5Cpp.h
+/home/jcchia/FYP/PCD2H5/H5Cpp.h
+pcl/point_cloud.h
+-
+pcl/point_types.h
+-
+pcl/io/pcd_io.h
+-
+pcl/visualization/cloud_viewer.h
+-
+iostream
+-
+string
+-
+cstdio
+-
+fstream
+-
+
