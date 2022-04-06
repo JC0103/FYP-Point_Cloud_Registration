@@ -6,6 +6,7 @@ import os
 from typing import List
 
 import h5py
+from matplotlib.pyplot import axis
 import numpy as np
 import open3d as o3d
 from torch.utils.data import Dataset
@@ -280,6 +281,7 @@ class FoodObjectsHdf(Dataset):
             self._logger.info('Using all categories.')
 
         self.src_data, self.ref_data, self._labels = self._read_h5_files(h5_filelist, categories_idx)
+        self.gt_trans = self.get_gt_transformation()
         # self._data, self._labels = self._data[:32], self._labels[:32, ...]
         self._transform = transform
         self._logger.info('Loaded {} {} instances.'.format(self.src_data.shape[0], subset))
@@ -323,6 +325,7 @@ class FoodObjectsHdf(Dataset):
             all_ref_data.append(ref_data)
             all_labels.append(labels)
 
+        print(all_labels)
         all_src_data = np.concatenate(all_src_data, axis=0)
         all_ref_data = np.concatenate(all_ref_data, axis=0)
         all_labels = np.concatenate(all_labels, axis=0)
@@ -343,3 +346,22 @@ class FoodObjectsHdf(Dataset):
 
     def to_category(self, i):
         return self._idx2category[i]
+
+    def get_angle(self, i):
+        separate_categories = self.to_category(i).split("_")
+        return int(separate_categories[1])
+
+    @staticmethod
+    def get_gt_transformation(self):
+        all_gt_trans = []
+        for n in range(len(self._idx2category)):
+            # TODO: Change to get transformation function
+            gt_trans = np.array([self.get_angle(n)])
+            all_gt_trans.append(gt_trans)
+        print(all_gt_trans)
+        all_gt_trans = np.concatenate(all_gt_trans, axis=0)
+        
+        return all_gt_trans
+
+
+
