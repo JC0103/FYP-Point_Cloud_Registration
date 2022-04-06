@@ -183,13 +183,15 @@ class RPMNet(nn.Module):
         all_beta, all_alpha = [], []
         for i in range(num_iter):
 
-            beta, alpha = self.weights_net([xyz_src_t, xyz_ref])
             feat_src = self.feat_extractor(xyz_src_t, norm_src_t)
-            feat_ref = self.feat_extractor(xyz_ref, norm_ref)
+            # if torch.any(feat_src.isnan()):
+            #     continue
+            beta, alpha = self.weights_net([xyz_src_t, xyz_ref])
 
+            
+            feat_ref = self.feat_extractor(xyz_ref, norm_ref)
             feat_distance = match_features(feat_src, feat_ref)
             affinity = self.compute_affinity(beta, feat_distance, alpha=alpha)
-
             # Compute weighted coordinates
             log_perm_matrix = sinkhorn(affinity, n_iters=self.num_sk_iter, slack=self.add_slack)
             perm_matrix = torch.exp(log_perm_matrix)
@@ -198,6 +200,7 @@ class RPMNet(nn.Module):
             # Compute transform and transform points
             transform = compute_rigid_transform(xyz_src, weighted_ref, weights=torch.sum(perm_matrix, dim=2))
             xyz_src_t, norm_src_t = se3.transform(transform.detach(), xyz_src, norm_src)
+
 
             transforms.append(transform)
             all_gamma.append(torch.exp(affinity))
