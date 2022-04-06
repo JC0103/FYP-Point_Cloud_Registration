@@ -288,7 +288,9 @@ class FoodObjectsHdf(Dataset):
         self._logger.info('Loaded {} {} instances.'.format(self.ref_data.shape[0], subset))
 
     def __getitem__(self, item):
-        sample = {'points_src': self.src_data[item, :, :], 'points_ref': self.ref_data[item, :, :], 'label': self._labels[item], 'idx': np.array(item, dtype=np.int32)}
+        #TODO: change transform matrix format
+        sample = {'points_src': self.src_data[item, :, :], 'points_ref': self.ref_data[item, :, :], 
+                    'transform_gt': self.gt_trans[item],'label': self._labels[item], 'idx': np.array(item, dtype=np.int32)}
 
         if self._transform:
             sample = self._transform(sample)
@@ -351,7 +353,6 @@ class FoodObjectsHdf(Dataset):
         separate_categories = self.to_category(i).split("_")
         return int(separate_categories[1])
 
-    @staticmethod
     def get_gt_transformation(self):
         all_gt_trans = []
         for n in range(len(self._idx2category)):
