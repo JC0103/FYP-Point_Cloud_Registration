@@ -201,7 +201,6 @@ class FeatExtractionEarlyFusion(nn.Module):
         post_feat = self.postpool(pooled_feat)  # Post pooling dense layers
         cluster_feat = post_feat.permute(0, 2, 1)
         cluster_feat = cluster_feat / torch.norm(cluster_feat, dim=-1, keepdim=True)
-
         return cluster_feat  # (B, N, C)
 
 

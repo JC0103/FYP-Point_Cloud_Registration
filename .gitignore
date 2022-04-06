@@ -21,7 +21,8 @@ predator/
 *.txt
 *.pth
 *.pkl
-#.pcd
+*.pcd
+*.h5
 
 # RPMNET
 # Created by https://www.gitignore.io/api/linux,macos,python,pycharm

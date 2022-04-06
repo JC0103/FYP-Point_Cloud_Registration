@@ -8,9 +8,9 @@ MyFilter::~MyFilter(){
 
 }
 
-int MyFilter::filterPointClouds(const string &pcd_names_file){
+int MyFilter::filterPointClouds(const string &pcd_dir, const string &pcd_names_file, const string &write_dir){
     ifstream in;
-    in.open(pcd_names_file);
+    in.open(pcd_dir + pcd_names_file);
     if (!in.is_open())
         return -1;
 
@@ -22,7 +22,7 @@ int MyFilter::filterPointClouds(const string &pcd_names_file){
         PCT::Ptr cleaned_cloud (new PCT);
     
 
-        pcl::io::loadPCDFile(textline, *raw_cloud);
+        pcl::io::loadPCDFile(pcd_dir + textline, *raw_cloud);
         raw_cloud -> is_dense = false;
 
         // Filter out nan point data
@@ -39,10 +39,8 @@ int MyFilter::filterPointClouds(const string &pcd_names_file){
         sor.filter(*cleaned_cloud);
         cout << textline << " Cleaned (inliers) point cloud size: " << cleaned_cloud->points.size() << endl;
 
-
         // Save proccessed data files
-        pcl::io::savePCDFileASCII("/home/jcchia/FYP/PCD2H5/filtered/" + textline , *cleaned_cloud);
-
+        pcl::io::savePCDFileASCII(write_dir + textline, *cleaned_cloud);
         // sor.setNegative (true);
         // sor.filter(*cleaned_cloud);
         // pcl::io::savePCDFileASCII("/home/jcchia/FYP/PCD2H5/filtered/" + textline , *cleaned_cloud);

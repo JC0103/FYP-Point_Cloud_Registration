@@ -41,8 +41,8 @@ void loop() {
   // waits for the servo to get there (0.22 sec/60°at 4.8V)
   if (abs(millis() - previous_write_time) > 600){
     arduino_hb_pub.publish(&hb_msg);
-    L_servo.write(angle + L_zeros_angle);                  // sets the servo position according to the scaled value
-    R_servo.write(R_zeros_angle - angle);
+    L_servo.write(-angle + L_zeros_angle);                  // sets the servo position according to the scaled value
+    R_servo.write(R_zeros_angle + angle);
   }                      
   nh.spinOnce();
   delay(3);

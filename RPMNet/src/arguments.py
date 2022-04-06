@@ -14,13 +14,13 @@ def rpmnet_arguments():
     parser.add_argument('--debug', action='store_true', help='If set, will enable autograd anomaly detection')
     # settings for input data_loader
     parser.add_argument('-i', '--dataset_path',
-                        default='../datasets/modelnet40_ply_hdf5_2048',
+                        default='../datasets/food_objects_hdf5_2048',
                         type=str, metavar='PATH',
                         help='path to the processed dataset. Default: ../datasets/modelnet40_ply_hdf5_2048')
-    parser.add_argument('--dataset_type', default='modelnet_hdf',
+    parser.add_argument('--dataset_type', default='foodobject_hdf',
                         choices=['modelnet_hdf', 'bunny', 'armadillo', 'buddha', 'dragon'],
                         metavar='DATASET', help='dataset type (default: modelnet_hdf)')
-    parser.add_argument('--num_points', default=1024, type=int,
+    parser.add_argument('--num_points', default=2048, type=int,
                         metavar='N', help='points in point-cloud (default: 1024)')
     parser.add_argument('--noise_type', default='crop', choices=['clean', 'jitter', 'crop'],
                         help='Types of perturbation to consider')
@@ -66,9 +66,9 @@ def rpmnet_train_arguments():
     """Used only for training"""
     parser = argparse.ArgumentParser(parents=[rpmnet_arguments()])
 
-    parser.add_argument('--train_categoryfile', type=str, metavar='PATH', default='./data_loader/modelnet40_half1.txt',
+    parser.add_argument('--train_categoryfile', type=str, metavar='PATH', default='./data_loader/foodobjects.txt',
                         help='path to the categories to be trained')  # eg. './dataset/modelnet40_half1.txt'
-    parser.add_argument('--val_categoryfile', type=str, metavar='PATH', default='./data_loader/modelnet40_half1.txt',
+    parser.add_argument('--val_categoryfile', type=str, metavar='PATH', default='./data_loader/foodobjects.txt',
                         help='path to the categories to be val')  # eg. './sampledata/modelnet40_half1.txt'
     # Training parameters
     parser.add_argument('--lr', default=1e-4, type=float, help='Learning rate during training')
@@ -81,7 +81,7 @@ def rpmnet_train_arguments():
                              'Also saves checkpoints at the same interval')
     parser.add_argument('--num_workers', default=4, type=int,
                         help='Number of workers for data_loader loader (default: 4).')
-    parser.add_argument('--num_train_reg_iter', type=int, default=2,
+    parser.add_argument('--num_train_reg_iter', type=int, default=6,
                         help='Number of outer iterations used for registration (only during training)')
 
     parser.description = 'Train RPMNet'
@@ -93,7 +93,7 @@ def rpmnet_eval_arguments():
     parser = argparse.ArgumentParser(parents=[rpmnet_arguments()])
 
     # settings for input data_loader
-    parser.add_argument('--test_category_file', type=str, metavar='PATH', default='./data_loader/modelnet40_half2.txt',
+    parser.add_argument('--test_category_file', type=str, metavar='PATH', default='./data_loader/foodobjects.txt',
                         help='path to the categories to be val')
     # Provided transforms
     parser.add_argument('--transform_file', type=str,

@@ -26,6 +26,15 @@ class SplitSourceRef:
         return sample
 
 
+class CopySource:
+    """Copy the source point clouds into raw point clouds"""
+    def __call__(self, sample:Dict):
+        if isinstance(sample['points_src'], torch.Tensor):
+            sample['points_raw'] = sample['points_src'].detach()
+        else: # is numpy
+            sample['points_raw'] = sample['points_src'].copy()
+        return sample
+
 class Resampler:
     def __init__(self, num: int):
         """Resamples a point cloud containing N points to one containing M

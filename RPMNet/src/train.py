@@ -104,7 +104,6 @@ def compute_losses(data: Dict, pred_transforms: List, endpoints: Dict,
         discount = discount_factor ** (num_iter - int(k[k.rfind('_')+1:]) - 1)
         total_losses.append(losses[k] * discount)
     losses['total'] = torch.sum(torch.stack(total_losses), dim=0)
-
     return losses
 
 
@@ -261,7 +260,6 @@ def run(train_set, val_set):
             # Forward through neural network
             dict_all_to_device(train_data, _device)
             pred_transforms, endpoints = model(train_data, _args.num_train_reg_iter)  # Use less iter during training
-
             # Compute loss, and optimize
             train_losses = compute_losses(train_data, pred_transforms, endpoints,
                                           loss_type=_args.loss_type, reduction='mean')
