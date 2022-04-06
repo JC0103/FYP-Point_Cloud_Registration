@@ -124,57 +124,62 @@ if __name__ == '__main__':
     cloudroi = np.array([[-0.14, -0.13, 0.68],
                         [0.03, 0.11, 0.68]])
 
-    #source_dir = "../11_Oct/cam1/pcd/1633939443632570.pcd"
-    source_dir = "/home/jcchia/Pictures/FYP/cam2/pcd/second_ver/"
-    pcd_source = o3d.io.read_point_cloud(os.path.join(source_dir,"second_ver_5_1.pcd"))
-    #o3d.visualization.draw_geometries([pcd_source])
-    np_source = np.asarray(pcd_source.points)
+    source_dir = "/home/jcchia/Pictures/FYP/cam1/pcd/second_ver/"
+    write_dir = "/home/jcchia/Pictures/FYP/cam1/pcd/1st_preprocess/"
+    with open (source_dir + 'pcd_names.txt') as f:
+        line = f.readline
+        while line:
+            line = f.readline().strip()
+            print(source_dir + line)
+            pcd_source = o3d.io.read_point_cloud(source_dir + line)
+            #o3d.visualization.draw_geometries([pcd_source])
+            np_source = np.asarray(pcd_source.points)
 
 
-    # GetROI=0 ROI predefined, 1: Get ROI by the function
-    GetROI = 1
-    if GetROI:
-        #get roi point cloud
-        picked_points = pick_points(pcd_source)
-        leftupper = pcd_source.points[picked_points[0]]
-        rightbottom = pcd_source.points[picked_points[1]]
-        print("leftupper rightbottom:  ", leftupper,rightbottom)
-    else:
-        leftupper = cloudroi[0]
-        rightbottom = cloudroi[1]
-        print("start pcl processing:  ", leftupper,rightbottom)
+            # GetROI=0 ROI predefined, 1: Get ROI by the function
+            GetROI = 1
+            if GetROI:
+                #get roi point cloud
+                picked_points = pick_points(pcd_source)
+                leftupper = pcd_source.points[picked_points[0]]
+                rightbottom = pcd_source.points[picked_points[1]]
+                print("leftupper rightbottom:  ", leftupper,rightbottom)
+            else:
+                leftupper = cloudroi[0]
+                rightbottom = cloudroi[1]
+                print("start pcl processing:  ", leftupper,rightbottom)
 
 
-    bounding_ploy = np.array([
-                          [leftupper[0],leftupper[1], 0],
-                          [rightbottom[0], leftupper[1], 0],
-                          [rightbottom[0], rightbottom[1], 0],
-                          [leftupper[0], rightbottom[1], 0]
-                         ], dtype = np.float32).reshape([-1, 3]).astype("float64")
+            bounding_ploy = np.array([
+                                [leftupper[0],leftupper[1], 0],
+                                [rightbottom[0], leftupper[1], 0],
+                                [rightbottom[0], rightbottom[1], 0],
+                                [leftupper[0], rightbottom[1], 0]
+                                ], dtype = np.float32).reshape([-1, 3]).astype("float64")
 
-    bounding_polygon = np.array(bounding_ploy, dtype = np.float64)
-    vol = o3d.visualization.SelectionPolygonVolume()
+            bounding_polygon = np.array(bounding_ploy, dtype = np.float64)
+            vol = o3d.visualization.SelectionPolygonVolume()
 
-    #The Z-axis is used to define the height of the selected region
-    vol.orthogonal_axis = "Z"
-    vol.axis_max = np_source[:,2].max()
-    vol.axis_min =np_source[:,2].min()
+            #The Z-axis is used to define the height of the selected region
+            vol.orthogonal_axis = "Z"
+            vol.axis_max = np_source[:,2].max()
+            vol.axis_min =np_source[:,2].min()
 
-    vol.bounding_polygon = o3d.utility.Vector3dVector(bounding_polygon)
-    pcd_food = vol.crop_point_cloud(pcd_source)
-    print("crop roi point cloud ....")
-    print("number of points: ", len(pcd_food.points))
+            vol.bounding_polygon = o3d.utility.Vector3dVector(bounding_polygon)
+            pcd_food = vol.crop_point_cloud(pcd_source)
+            print("crop roi point cloud ....")
+            print("number of points: ", len(pcd_food.points))
 
-    filtered_cloud = voxel_filter(pcd_food.points, 0.007)
-    print("type: ", type(filtered_cloud))
+            filtered_cloud = voxel_filter(pcd_food.points, 0.007)
+            print("type: ", type(filtered_cloud))
 
-    point_cloud_filtered = o3d.geometry.PointCloud()
-    point_cloud_filtered.points = o3d.utility.Vector3dVector(filtered_cloud)
-    
-    print("number of points after filter: ", len(point_cloud_filtered.points))
-    o3d.io.write_point_cloud("/home/jcchia/Pictures/FYP/cam2/pcd/1st_preprocess/eclair_0.pcd", point_cloud_filtered)
-    o3d.visualization.draw_geometries([pcd_food])
-    o3d.visualization.draw_geometries([point_cloud_filtered])
+            point_cloud_filtered = o3d.geometry.PointCloud()
+            point_cloud_filtered.points = o3d.utility.Vector3dVector(filtered_cloud)
+            
+            print("number of points after filter: ", len(point_cloud_filtered.points))
+            o3d.io.write_point_cloud(write_dir + line, point_cloud_filtered)
+            o3d.visualization.draw_geometries([pcd_food])
+            o3d.visualization.draw_geometries([point_cloud_filtered])
 
 
    
