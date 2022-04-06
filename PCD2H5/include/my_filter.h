@@ -16,7 +16,7 @@ public:
     MyFilter();
     ~MyFilter();
 
-    int filterPointClouds(const string &pcd_names_file);
+    int filterPointClouds(const string &pcd_dir, const string &pcd_names_file, const string &write_dir);
     int Resample(const string &pcd_names_file);
 private:
 
