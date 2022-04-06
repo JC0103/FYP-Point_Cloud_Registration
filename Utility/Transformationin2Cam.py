@@ -66,6 +66,58 @@ def pick_points(pcd):
     return picked_points
 
 
+def voxel_filter(point_cloud,leaf_size,mode ='random'):
+    #Build voxel grid
+    x_max ,y_max ,z_max = np.max(point_cloud,axis=0)
+    x_min ,y_min ,z_min = np.min(point_cloud,axis=0)
+    D_x = (x_max - x_min)/leaf_size
+    D_y = (y_max - y_min)/leaf_size
+    D_z = (z_max - z_min)/leaf_size
+    
+    #Obtain corresponding voxel grid of every points
+    point_cloud = np.asarray(point_cloud)
+    h = []
+    for i in range(point_cloud.shape[0]):
+        h_x = np.floor((point_cloud[i][0]-x_min)/leaf_size)
+        h_y = np.floor((point_cloud[i][1]-y_min)/leaf_size)
+        h_z = np.floor((point_cloud[i][2]-z_min)/leaf_size)
+        H = h_x + h_y * D_x + h_z *D_x *D_y
+        h.append(H)
+        
+    #Sort the points according to the voxel grid ID
+    h = np.asarray(h)
+    voxel_index = np.argsort(h)
+    h_sort = h[voxel_index]
+
+    #random
+    if mode == 'random':
+        filtered_points = []
+        index_begin = 0
+        for i in range(len(voxel_index)-1):
+            if h_sort[i] == h_sort[i+1]:
+                continue
+            else:
+                point_index = voxel_index[index_begin:(i+1)]
+                random_index = np.random.choice(point_index)
+                random_choice = point_cloud[random_index]
+                filtered_points.append(random_choice)
+                index_begin = i
+    #centroid
+    if mode == 'centroid':
+        filtered_points = []
+        index_begin = 0
+        for i in range(len(voxel_index)-1):
+            if h_sort[i] == h_sort[i+1]:
+                continue
+            else:
+                point_index = voxel_index[index_begin:(i+1)]
+                filtered_points.append(np.mean(point_cloud[point_index],axis=0))
+                index_begin = i
+    filtered_points = np.array(filtered_points, dtype=np.float64)
+    return filtered_points
+
+
+
 
 if __name__ == '__main__':
 
@@ -73,14 +125,14 @@ if __name__ == '__main__':
                         [0.03, 0.11, 0.68]])
 
     #source_dir = "../11_Oct/cam1/pcd/1633939443632570.pcd"
-    source_dir = "./"
-    pcd_source = o3d.io.read_point_cloud(os.path.join(source_dir,"camrrc.pcd"))
+    source_dir = "/home/jcchia/Pictures/FYP/cam2/pcd/second_ver/"
+    pcd_source = o3d.io.read_point_cloud(os.path.join(source_dir,"second_ver_5_1.pcd"))
     #o3d.visualization.draw_geometries([pcd_source])
     np_source = np.asarray(pcd_source.points)
 
 
     # GetROI=0 ROI predefined, 1: Get ROI by the function
-    GetROI = 0
+    GetROI = 1
     if GetROI:
         #get roi point cloud
         picked_points = pick_points(pcd_source)
@@ -111,8 +163,19 @@ if __name__ == '__main__':
     vol.bounding_polygon = o3d.utility.Vector3dVector(bounding_polygon)
     pcd_food = vol.crop_point_cloud(pcd_source)
     print("crop roi point cloud ....")
+    print("number of points: ", len(pcd_food.points))
 
+    filtered_cloud = voxel_filter(pcd_food.points, 0.007)
+    print("type: ", type(filtered_cloud))
+
+    point_cloud_filtered = o3d.geometry.PointCloud()
+    point_cloud_filtered.points = o3d.utility.Vector3dVector(filtered_cloud)
+    
+    print("number of points after filter: ", len(point_cloud_filtered.points))
+    o3d.io.write_point_cloud("/home/jcchia/Pictures/FYP/cam2/pcd/1st_preprocess/eclair_0.pcd", point_cloud_filtered)
     o3d.visualization.draw_geometries([pcd_food])
+    o3d.visualization.draw_geometries([point_cloud_filtered])
+
 
    
 
