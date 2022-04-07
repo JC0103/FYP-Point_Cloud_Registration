@@ -27,20 +27,24 @@ int MyIO::markDownStoredPCDNameAndItsLabel(const string &pcd_name, const int &la
 // Extract a set of PCD files and combine them and write the result to a h5 file.
 // Also write lables to a h5 file.
 int MyIO::combinePCDsAndLabelsIntoH5File(const string &h5_file, const string &pcd_dir, const string &pcd_names_file, const string &labels_file){
+    cout << "Starting single cloud conversion...\n";
     unsigned int RANK_clouds = 3;
     unsigned int RANK_labels = 2;
     unsigned int pt_dim = 3;
-    unsigned int pt_num = 2400;
+    unsigned int pt_num = 2800;
     // From a file storing all PCD filenames, dynamically count how many PCD files are required to put into H5 file
     unsigned int cloud_num;
-    cloud_num = readFileAndCountHowManyClouds(pcd_names_file);
-    if (cloud_num == -1) return 0;
- 
+    cloud_num = readFileAndCountHowManyClouds(pcd_dir + pcd_names_file);
+    if (cloud_num == -1) {
+        cout << "No cloud detected\n";
+        return 0;
+    }
     const std::string DATASET_NAME("data");
     const std::string LABELSET_NAME("label");
     // Read clouds and labels and store as float array and int array respectively
     float* data = new float [pt_dim*pt_num*cloud_num];
     readPCDs(pcd_dir, pcd_names_file, data, pt_num);
+
     int* label = new int[cloud_num];
     readLabels(labels_file, label);
     float* normal = new float [pt_dim*pt_num*cloud_num];
@@ -148,7 +152,7 @@ int MyIO::combinePCDsAndLabelsIntoH5File(const string &h5_file, const string &pc
     unsigned int RANK_labels = 2;
  
     unsigned int pt_dim = 3;
-    unsigned int pt_num = 2400;
+    unsigned int pt_num = 2800;
     // From a file storing all PCD filenames, dynamically count how many PCD files are required to put into H5 file
     unsigned int cloud_num;
     cloud_num = readFileAndCountHowManyClouds(pcd_src_dir + pcd_names_file);

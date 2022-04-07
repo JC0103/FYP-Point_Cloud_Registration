@@ -43,6 +43,7 @@ private:
     int readPCDs(const string &pcd_dir, const string &pcd_names_file, float *data, const unsigned int &pt_num);
     int estimateNormals(const string &pcd_names_file, float *normal_array, const unsigned int &pt_num);
     int readLabels(const string &labels_file, int *data);
+    int pcd_count;
 
  
 };

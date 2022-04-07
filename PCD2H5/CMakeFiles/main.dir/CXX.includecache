@@ -20,14 +20,6 @@ my_io.h
 my_filter.h
 /home/jcchia/FYP/PCD2H5/src/my_filter.h
 
-/home/jcchia/FYP/PCD2H5/src/my_filter.cpp
-my_filter.h
-/home/jcchia/FYP/PCD2H5/src/my_filter.h
-
-/home/jcchia/FYP/PCD2H5/src/my_io.cpp
-my_io.h
-/home/jcchia/FYP/PCD2H5/src/my_io.h
-
 /usr/include/eigen3/Eigen/Cholesky
 Core
 /usr/include/eigen3/Eigen/Core
