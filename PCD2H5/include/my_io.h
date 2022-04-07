@@ -34,7 +34,7 @@ public:
     ~MyIO();
  
     int markDownStoredPCDNameAndItsLabel(const string &pcd_name, const int &label, const string &pcd_names_file, const string &labels_file);
-    int combinePCDsAndLabelsIntoH5File(const string &h5_file,  const string &pcd_names_file, const string &labels_file);
+    int combinePCDsAndLabelsIntoH5File(const string &h5_file,  const string &pcd_dir,const string &pcd_names_file, const string &labels_file);
     int combinePCDsAndLabelsIntoH5File(const string &h5_file,  const string &pcd_src_dir, const string &pcd_ref_dir, const string &pcd_names_file, const string &labels_file);
     int readFileAndCountHowManyClouds(const string &pcd_names_file);
 

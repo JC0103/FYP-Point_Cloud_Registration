@@ -26,7 +26,7 @@ int MyIO::markDownStoredPCDNameAndItsLabel(const string &pcd_name, const int &la
  
 // Extract a set of PCD files and combine them and write the result to a h5 file.
 // Also write lables to a h5 file.
-int MyIO::combinePCDsAndLabelsIntoH5File(const string &h5_file, const string &pcd_names_file, const string &labels_file){
+int MyIO::combinePCDsAndLabelsIntoH5File(const string &h5_file, const string &pcd_dir, const string &pcd_names_file, const string &labels_file){
     unsigned int RANK_clouds = 3;
     unsigned int RANK_labels = 2;
     unsigned int pt_dim = 3;
@@ -40,7 +40,7 @@ int MyIO::combinePCDsAndLabelsIntoH5File(const string &h5_file, const string &pc
     const std::string LABELSET_NAME("label");
     // Read clouds and labels and store as float array and int array respectively
     float* data = new float [pt_dim*pt_num*cloud_num];
-    readPCDs(pcd_names_file, "files.txt", data, pt_num);
+    readPCDs(pcd_dir, pcd_names_file, data, pt_num);
     int* label = new int[cloud_num];
     readLabels(labels_file, label);
     float* normal = new float [pt_dim*pt_num*cloud_num];
