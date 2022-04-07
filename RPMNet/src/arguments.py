@@ -66,9 +66,9 @@ def rpmnet_train_arguments():
     """Used only for training"""
     parser = argparse.ArgumentParser(parents=[rpmnet_arguments()])
 
-    parser.add_argument('--train_categoryfile', type=str, metavar='PATH', default='./data_loader/foodobjects.txt',
+    parser.add_argument('--train_categoryfile', type=str, metavar='PATH', default='./data_loader/train_foodobjects.txt',
                         help='path to the categories to be trained')  # eg. './dataset/modelnet40_half1.txt'
-    parser.add_argument('--val_categoryfile', type=str, metavar='PATH', default='./data_loader/foodobjects.txt',
+    parser.add_argument('--val_categoryfile', type=str, metavar='PATH', default='./data_loader/test_foodobjects.txt',
                         help='path to the categories to be val')  # eg. './sampledata/modelnet40_half1.txt'
     # Training parameters
     parser.add_argument('--lr', default=1e-4, type=float, help='Learning rate during training')
@@ -93,7 +93,7 @@ def rpmnet_eval_arguments():
     parser = argparse.ArgumentParser(parents=[rpmnet_arguments()])
 
     # settings for input data_loader
-    parser.add_argument('--test_category_file', type=str, metavar='PATH', default='./data_loader/foodobjects.txt',
+    parser.add_argument('--test_category_file', type=str, metavar='PATH', default='./data_loader/test_foodobjects.txt',
                         help='path to the categories to be val')
     # Provided transforms
     parser.add_argument('--transform_file', type=str,

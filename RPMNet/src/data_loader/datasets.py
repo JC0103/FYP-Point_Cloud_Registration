@@ -40,7 +40,9 @@ def get_train_datasets(args: argparse.Namespace):
         val_data = ModelNetHdf(args.dataset_path, subset='test', categories=val_categories,
                                transform=val_transforms)
     elif args.dataset_type == 'foodobject_hdf':
-        transforms = Transforms.CopySource()
+        transforms = [Transforms.CopySource(),
+                    Transforms.Resampler(2048)]
+        transforms = torchvision.transforms.Compose(transforms)
         train_data = FoodObjectsHdf(args.dataset_path, subset='train', categories=train_categories, transform = transforms)
         val_data = FoodObjectsHdf(args.dataset_path, subset='test', categories=val_categories, transform= transforms)
     else:
@@ -64,8 +66,10 @@ def get_test_datasets(args: argparse.Namespace):
         test_data = ModelNetHdf(args.dataset_path, subset='test', categories=test_categories,
                                 transform=test_transforms)
     elif args.dataset_type == 'foodobject_hdf':
-        transforms = Transforms.CopySource()
-        test_data = FoodObjectsHdf(args.dataset_path, subset='train', categories=test_categories, transform=transforms)
+        transforms = [Transforms.CopySource(),
+                    Transforms.Resampler(2048)]
+        transforms = torchvision.transforms.Compose(transforms)
+        test_data = FoodObjectsHdf(args.dataset_path, subset='test', categories=test_categories, transform=transforms)
     else:
         raise NotImplementedError
 
@@ -357,9 +361,8 @@ class FoodObjectsHdf(Dataset):
         all_gt_trans = []
         for n in range(len(self._idx2category)):
             # TODO: Change to get transformation function
-            gt_trans = np.array([self.get_angle(n)])
+            gt_trans = np.array([Transforms.getTransform(self.get_angle(n), self.get_angle(n))])
             all_gt_trans.append(gt_trans)
-        print(all_gt_trans)
         all_gt_trans = np.concatenate(all_gt_trans, axis=0)
         
         return all_gt_trans

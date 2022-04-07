@@ -351,3 +351,72 @@ class Dict2PointnetLKList:
             transform_gt_4x4 = np.concatenate([sample['transform_gt'],
                                                np.array([[0.0, 0.0, 0.0, 1.0]], dtype=np.float32)], axis=0)
             return sample['points_src'][:, :3], sample['points_ref'][:, :3], transform_gt_4x4
+
+def getTransform(angle_cam1, angle_cam2):
+#---------------------------------------------------------#
+
+
+   # cam_L = 0.476
+    L = 0.476
+    cam1_l = 0.1645
+    cam2_l = 0.1065
+
+    angle_cam1 += 2.5
+    angle_cam2 += 2.5
+
+    angle_cam1 = angle_cam1 * np.pi /180
+    angle_cam2 = angle_cam2 * np.pi /180
+
+
+  #  T = np.array([-(cam2_l-cam1_l+0.05),-L*np.cos(angle_cam1*2),L*np.sin(angle_cam1*2)-0.03])  #5
+
+ #   T = np.array([-(cam2_l-cam1_l), -L*np.cos(angle_cam1), 0])
+
+    thera1 = np.zeros(3)
+    thera1[0] = -angle_cam1
+    thera1[1] = 5 * np.pi /180  #6.5
+    thera1[2] = 178 * np.pi /180
+
+    R1 = eulerAnglesToRotMatrixSelfRotate(thera1)
+
+    thera2 = np.zeros(3)
+    thera2[0] = -angle_cam1
+    #thera2[1] = 0
+    thera2[2] = 0
+    thera2[1] = -2 * np.pi /180  #6.5
+    #thera2[2] = np.pi
+    R2 = eulerAnglesToRotMatrixSelfRotate(thera2)
+    T2 = np.array([(cam1_l-cam2_l-0.02),L,0])
+
+
+    R = np.matmul(R1, np.linalg.inv(R2))
+    T = np.matmul(R1, T2)
+    T = np.array([T])
+   
+    Trans_temp = np.column_stack((R,T.T))
+    Trans = np.row_stack((Trans_temp, np.matrix([0,0,0,1])))
+
+
+    return Trans
+
+def eulerAnglesToRotMatrixSelfRotate(theta) :
+    
+    R_x = np.array([[1,         0,                  0                   ],
+                    [0,         math.cos(theta[0]), -math.sin(theta[0]) ],
+                    [0,         math.sin(theta[0]), math.cos(theta[0])  ]
+                    ])
+                       
+    R_y = np.array([[math.cos(theta[1]),    0,      math.sin(theta[1])  ],
+                    [0,                     1,      0                   ],
+                    [-math.sin(theta[1]),   0,      math.cos(theta[1])  ]
+                    ])
+                
+    R_z = np.array([[math.cos(theta[2]),    -math.sin(theta[2]),    0],
+                    [math.sin(theta[2]),    math.cos(theta[2]),     0],
+                    [0,                     0,                      1]
+                    ])
+                                       
+
+    R = np.matmul(R_y,np.matmul(R_x, R_z))
+
+    return R
